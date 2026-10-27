@@ -1,3 +1,5 @@
+print("holachat")
+
 def lockFile(rutaArchivo, fechaActual):										# Función para asegurar que solo exista una escritura por día
     with open(rutaArchivo, "r", encoding="utf-8") as lastVer:	# se abre el archivo en modo "read"
         diaActual = fechaActual.strftime("%d")
@@ -9,7 +11,7 @@ def lockFile(rutaArchivo, fechaActual):										# Función para asegurar que so
             return False            
 
 def blockNotif(fechaActual):
-    hRest = 23 -int(fechaActual.strftime("%H"))			  	# calcula cuánto tiempo falta para un nuevo día
+    hRest = 24 -int(fechaActual.strftime("%H"))			  	# calcula cuánto tiempo falta para un nuevo día
     mRest = 60 -int(fechaActual.strftime("%M"))			  	# y lo informa en un mensaje por pantalla
     print(f"¡Ya escribiste una entrada para el día de hoy!\nPuedes escribir una nueva en {hRest} horas y {mRest} minutos.")  
 
@@ -23,4 +25,3 @@ def newEntry(nomArchivo, fechaHoy):
     nomArchivo.write(input("¿Cómo te sientes hoy?: "))		# pide al usuario el contenido de la entrada y lo añade
     print("Tu entrada se guardó correctamente.")			# muestra un mensaje confirmando el éxito de la tarea
     nomArchivo.write("\n" + "-"*50 + "\n")					# deja un separador para que se distinga una entrada de otra
-    67
